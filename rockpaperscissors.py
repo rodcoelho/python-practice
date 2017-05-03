@@ -1,8 +1,8 @@
 from pick import pick
 import random
-from time import sleep
 
-#creating players, human and pc, and way to keep score
+#create players to track human and pc
+#method of keeping score
 
 class Players:
     def __init__(self):
@@ -14,54 +14,54 @@ PC = Players()
 
 
 
-#main decision whether to play or not
+#game, gameHuman, gamePC, gameDraw: declares win/loss, displays score, then asks player if he/she wishes to replay
 
-def main():
+def game():
     play = """Human: %s,  PC: %s.
             Do you want to play Rock, Paper, Scissor?""" %(Human.score, PC.score)
     decide = ('Yes' , 'No')
     decision = pick(decide, play)
     if decision[1] == 0 :
-        game()
+        main()
     else:
         quit()
 
-def mainHuman():
+def gameHuman():
     play = """HUMAN WINS!
             Human: %s,  PC: %s.
             Do you want to play Rock, Paper, Scissor?""" %(Human.score, PC.score)
     decide = ('Yes' , 'No')
     decision = pick(decide, play)
     if decision[1] == 0:
-        game()
+        main()
     else:
         quit()
 
-def mainPC():
+def gamePC():
     play = """PC WINS!
             Human: %s,  PC: %s.
             Do you want to play Rock, Paper, Scissor?""" %(Human.score, PC.score)
     decide = ('Yes' , 'No')
     decision = pick(decide, play)
     if decision[1] == 0:
-        game()
+        main()
     else:
         quit()
 
-def mainDraw():
+def gameDraw():
     play = """There was a DRAW.
             Human: %s,  PC: %s.
             Do you want to play again?""" %(Human.score, PC.score)
     decide = ('Yes' , 'No')
     decision = pick(decide, play)
     if decision[1] == 0:
-        game()
+        main()
     else:
         quit()
 
 
 #the actual game
-def game():
+def main():
 
     title = "Please choose your weapon: "
     options = ('rock', 'paper', 'scissor')
@@ -78,20 +78,20 @@ def game():
     print "PC: %s" %pcChoice
 
 
-    #judge winner/if draw. First determine draw scenario. Then Human winner. Then PC winner.
+    #Judgement. IF statement determines DRAW,  Human winner, or PC winner. Each IF statement sends player back to beginning of game
     if option == pcChoice:
         print "draw"
-        mainDraw()
+        gameDraw()
 
     elif (option == 'rock' and pcChoice == 'scissor' or option == 'paper' and pcChoice == 'rock' or option == 'scissor' and pcChoice == 'paper'):
         print "Human wins"
         Human.score = Human.score + 1
-        mainHuman()
+        gameHuman()
 
     elif (pcChoice == 'rock' and option == 'scissor' or pcChoice == 'paper' and option == 'rock' or pcChoice == 'scissor' and option == 'paper'):
         print "PC wins"
         PC.score = PC.score + 1
-        mainPC()
+        gamePC()
 
     else:
         print "something went wrong"
@@ -100,4 +100,4 @@ def game():
 
 
 #initiatize the game
-main()
+game()
