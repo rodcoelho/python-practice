@@ -1,8 +1,4 @@
-`this is a sample`
-**This is Bold**
-_This is Italics_
 
----
 
 
 ##Python Projects
