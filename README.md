@@ -1,6 +1,6 @@
-##Python Projects
+## Python Projects
 
-####1. Inspirational Alarm
+#### 1. Inspirational Alarm
 
 Daily alarm randomly opens an 'inspirational' video from a list of urls on user's primary browser.  
 
@@ -8,11 +8,11 @@ Run `InspirationalAlarm.py`
 
 _Screenshots coming soon_
 
-######Expected Update: Next version will ask user to insert preferred alarm time and ask users to input videos.
+###### Expected Update: Next version will ask user to insert preferred alarm time and ask users to input videos.
 
 ---
 
-####2. Rock Paper Scissors Game
+#### 2. Rock Paper Scissors Game
 
 A simple Rock-Paper-Scissors game (human vs pc) with ability to keep score.
 
@@ -30,11 +30,11 @@ And a screenshot from playing a few games:
 
 ![alt text](https://cloud.githubusercontent.com/assets/15854694/26028734/f7df707e-37eb-11e7-95ab-f88194807a13.png)
 
-######Expected Update: Next version will allow for Human1 vs. Human2 ( and PC1 vs. PC2 ) 
+###### Expected Update: Next version will allow for Human1 vs. Human2 ( and PC1 vs. PC2 ) 
 
 ---
 
-####3. Weather Tracker
+#### 3. Weather Tracker
 
 _In production... Extract weather data from openweathermap. 
 Show hour summary, 4 hour summary, and 8 hour summary of max and min temps._
@@ -45,7 +45,7 @@ _Screenshots coming soon_
 
 ---
 
-####4. Air Quality Text Alerts
+#### 4. Air Quality Text Alerts
 
 _In production..._
 
