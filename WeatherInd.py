@@ -2,8 +2,6 @@ import time, json, urllib2
 from datetime import datetime
 
 #asks user what zipcode they would like to track weather data from
-zipcode = raw_input("Type zipcode and press enter: ")
-url = "http://api.openweathermap.org/data/2.5/weather?zip=%s,us&appid=caacba9adefeac8c8af17749e5f73d6c" %zipcode
 
 #variables to define how often data is collected, and for how many times
 quarterinterval = 900 #15mins = 900seconds
@@ -20,6 +18,9 @@ minDay = []
 
 def main():
     #C is a variable, we use this to store the most recent temperature
+    zipcode = raw_input("Type zipcode and press enter: ")
+    url = "http://api.openweathermap.org/data/2.5/weather?zip=%s,us&appid=caacba9adefeac8c8af17749e5f73d6c" % zipcode
+
     C, weatherinfo = LoadCurrentTemp()
 
     # tells user the city, the initial temp, date and time
@@ -88,7 +89,8 @@ def resetMinHour():
     minHour = []
     return minHour
 
-main()
+if __name__ == "__main__":
+    main()
 
 ##once you want to add text messages:
 ##import yagmail
