@@ -47,8 +47,16 @@ _Screenshots coming soon_
 
 #### 4. Air Quality Text Alerts
 
-_In production..._
+Air Quality Indicator text message system - meant to be run in conjunction with chronjob. 
 
-_"How to use it" coming soon_
+This should be run completely in the Command Line by employing the typical sys.argv argument: 
 
-_Screenshots coming soon_
+`$ python AirQualityNotification.py [zipcode] [phone #] [phoneprovider]` 
+
+Command Line Argument should look like this:
+
+`$ python AirQualityNofication.py 94127 5550000111 T-Mobile`
+
+Phone number should be 10 digits, not including 1 at the beginning, ex: 5550001111. Phone provider can be one of the following: ATT, T-Mobile, Verizon, Sprint, or metroPCS. 
+
+
