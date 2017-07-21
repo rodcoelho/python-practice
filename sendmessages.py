@@ -1,6 +1,6 @@
-import yagmail
-username = '############'
-password = '############'
+import yagmail, keyring
+username = 'rodcpython@gmail.com'
+password = 'Cogitoergosum1@#py'
 yag = yagmail.SMTP(username,password)
 providers = {'ATT':'txt.att.net', 'T-mobile':'tmomail.net', 'Verizon':'vtext.com', 'Sprint': 'messaging.sprintpcs.com', 'metroPCS':'metropcs.sms.us'}
 
