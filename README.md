@@ -2,7 +2,7 @@
 
 #### 1. Air Quality Text Alerts
 
-Air Quality Indicator text message system - meant to be run in conjunction with chronjob. 
+AQI (Air Quality Index) text message system - meant to be run in conjunction with chronjob. 
 
 Run in the Command Line by employing the typical sys.argv argument: 
 
@@ -16,7 +16,7 @@ Phone number should be 10 digits, not including 1 at the beginning, ex: 55500011
 
 Phone provider can be one of the following: ATT, T-Mobile, Verizon, Sprint, or metroPCS. 
 
-You need sendmessages.py to run this. 
+You need sendmessages.py to run this (found in my repository)
 
 ---
 
