@@ -1,18 +1,38 @@
 ## Python Projects
 
-#### 1. Inspirational Alarm
+#### 1. Air Quality Text Alerts
 
-Daily alarm randomly opens an 'inspirational' video from a list of urls on user's primary browser.  
+Air Quality Indicator text message system - meant to be run in conjunction with chronjob. 
 
-Run `InspirationalAlarm.py`
+Run in the Command Line by employing the typical sys.argv argument: 
 
-_Screenshots coming soon_
+`$ python AirQualityNotification.py [zipcode] [phone #] [phoneprovider]` 
 
-###### Expected Update: Next version will ask user to insert preferred alarm time and ask users to input videos.
+Command Line Argument should look something like this:
+
+`$ python AirQualityNofication.py 94127 5550001111 T-Mobile`
+
+Phone number should be 10 digits, not including 1 at the beginning, ex: 5550001111. 
+
+Phone provider can be one of the following: ATT, T-Mobile, Verizon, Sprint, or metroPCS. 
+
+You need sendmessages.py to run this. 
 
 ---
 
-#### 2. Rock Paper Scissors Game
+#### 2. SendMessages
+
+.py file used in Air Quality project to send messages
+
+To send text messages, import: `from sendmessages import sendtext` and call: `sendtext(phone number, phone provider, subject, message)`. 
+
+Phone provider can be one of the following: ATT, T-Mobile, Verizon, Sprint, or metroPCS
+
+To send emails, import : `from sendmessages import sendemail` and call: `sendemail(email,subject, message)`
+
+---
+
+#### 3. Rock Paper Scissors Game
 
 A simple Rock-Paper-Scissors game (human vs pc) with ability to keep score.
 
@@ -34,7 +54,7 @@ And a screenshot from playing a few games:
 
 ---
 
-#### 3. Weather Tracker
+#### 4. Weather Tracker
 
 _In production... Extract weather data from openweathermap. 
 Show hour summary, 4 hour summary, and 8 hour summary of max and min temps._
@@ -45,18 +65,16 @@ _Screenshots coming soon_
 
 ---
 
-#### 4. Air Quality Text Alerts
+#### 5. Inspirational Alarm
 
-Air Quality Indicator text message system - meant to be run in conjunction with chronjob. 
+Daily alarm randomly opens an 'inspirational' video from a list of urls on user's primary browser.  
 
-This should be run completely in the Command Line by employing the typical sys.argv argument: 
+Run `InspirationalAlarm.py`
 
-`$ python AirQualityNotification.py [zipcode] [phone #] [phoneprovider]` 
+_Screenshots coming soon_
 
-Command Line Argument should look like this:
+###### Expected Update: Next version will ask user to insert preferred alarm time and ask users to input videos.
 
-`$ python AirQualityNofication.py 94127 5550000111 T-Mobile`
 
-Phone number should be 10 digits, not including 1 at the beginning, ex: 5550001111. Phone provider can be one of the following: ATT, T-Mobile, Verizon, Sprint, or metroPCS. 
 
 
