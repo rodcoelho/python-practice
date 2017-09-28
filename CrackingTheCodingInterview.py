@@ -145,7 +145,3 @@
 #
 # get_middle_element_in_list(l1)
 # get_middle_element_in_list(l2)
-
-
-
-
