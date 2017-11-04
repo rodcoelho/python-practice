@@ -1,5 +1,8 @@
+## Cracking the Coding Interview Questions: https://inspirit.net.in/books/placements/Cracking%20the%20Coding%20Interview.pdf
+## Below are solutions for the book's practice questions
+## Solutions have been made into comments to allow for individual testing of solutions via command line
 
-# ## CHECK STRING FOR DUPLICATES
+# ## Check string for duplicates
 # s1 = 'abccc'
 # s2 = 'abcd'
 #
@@ -15,6 +18,7 @@
 #
 # check_string(s1)
 # check_string(s2)
+
 
 
 
@@ -38,8 +42,7 @@
 
 
 
-
-# # ## Remove duplicate chars in string
+# ## Remove duplicate chars in string
 #
 # s1 = 'abcc'
 # s2 = 'abac'
@@ -61,8 +64,8 @@
 
 
 
-#
-# # ## Check if s1 and s2 are anagrams
+
+# ## Check if s1 and s2 are anagrams
 #
 # s1 = 'cinema'
 # s2 = 'iceman'
@@ -86,7 +89,7 @@
 
 
 
-# # Replace spaces in string with '%20'
+# ## Replace spaces in string with '%20'
 #
 # s1 = 'abc'
 # s2 = 'abc cd'
@@ -109,7 +112,7 @@
 
 
 
-# # Remove duplicates in list
+# ## Remove duplicates in list
 # l1 = ['a','a','a']
 # l2 = ['a','b','c']
 # l3 = ['a', 'b', 'a', 'b']
@@ -132,7 +135,7 @@
 
 
 
-# # Return middle element in list
+# ## Return middle element in list
 #
 # l1 = [1,2,3,4,5]
 # l2 = [1,2,3,4,5,6]
