@@ -74,7 +74,15 @@ To send emails, import : `from sendmessages import sendemail` and call: `sendema
 
 ---
 
-#### 6. Weather Tracker
+#### 6. Cashier Change Converter
+
+Function that gives the user, or Cashier, the bills and coins needed to give someone change after a cash purchase.
+
+As an example, if the float is `112.33`, the result would be `1 $100 bill`, `1 $10 bill`, `2 $1 bills`, `1 quarter`, `1 nickel` and `3 pennies`.
+
+---
+
+#### 7. Weather Tracker
 
 _In production... Extract weather data from openweathermap.
 Show hour summary, 4 hour summary, and 8 hour summary of max and min temps._
