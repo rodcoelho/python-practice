@@ -10,19 +10,83 @@ Solutions in repo have been made into comments to allow for testing of individua
 
 ---
 
-#### 2. Inspirational Alarm
+#### 2. BST
 
-Daily alarm opens random 'inspirational' video from a list of urls from user's primary browser.
+Check: `binary_search_tree.py`
 
-Run `InspirationalAlarm.py`
+Implementation of Binary Search Tree with insert, search, and print (preorder, inorder) functionality.
 
 ---
 
-#### 3. Rock Paper Scissors Game
+#### 3. Stack
+
+Check: `traditional_stack.py`
+
+Traditional implementation of a stack object without the use of python's list object
+
+---
+
+#### 4. Queue
+
+Check: `traditional_queue.py`
+
+Traditional implementation of a queue object without the use of python's list object
+
+---
+
+#### 5. Linked List
+
+Check: `linked_list.py`
+
+Implementation of a linked list without python's list function
+
+
+---
+
+#### 6. Binary Converter
+
+Check: `binary_converter.py`
+
+`binary_to_decimal(num)` converts binary nums to decimal nums without using builtin functions or 3rd party packages
+
+`decimal_to_binary(num)` converts decimal nums to binary without using builtin functions or 3rd party packages
+
+---
+
+#### 7. Nested Array Board Game - Adventures of Barren Moor
+
+`$ python3 adventure_of_barren_moor.py`
+
+A game in which a magic compass that tells the user how far away the treasure is located.
+
+The player can choose north, south, east or west to move 1 space towards the treasure.
+
+---
+
+#### 8. Roman Decimal Converter
+
+Check: `roman_decimal_converter.py` 
+
+`decimal_to_roman(ameri_num)` converts decimals to Roman numeral.
+
+`roman_to_dec(roman_num)` converts Roman numerals to decimal.
+
+
+---
+
+#### 9. Inspirational Alarm
+
+Daily alarm opens random 'inspirational' video from a list of urls from user's primary browser.
+
+`$ python3 InspirationalAlarm.py`
+
+---
+
+#### 10. Rock Paper Scissors Game w/GUI
+
+`$ python rockpaperscissors.py` 
 
 A simple Rock-Paper-Scissors game (human vs pc) with ability to keep score.
-
-Run `rockpaperscissors.py` to get started
 
 This pop-up will appear within the Terminal. Use Up/Down/Enter to navigate:
 
@@ -40,41 +104,19 @@ And a screenshot from playing a few games:
 
 ---
 
+#### 11. Roulette Game w/GUI
 
-#### 4. Air Quality Text Alerts
+`$ python3 roulette.py`
 
-AQI (Air Quality Index) text message system - meant to be run in conjunction with chronjob.
+Simple Roulette game with pick GUI - User starts with $100. 
 
-Run in the Command Line by employing the typical sys.argv argument:
-
-`$ python AirQualityNotification.py [zipcode] [phone #] [phoneprovider]`
-
-Command Line Argument should look something like this:
-
-`$ python AirQualityNofication.py 94127 5550001111 T-Mobile`
-
-Phone number should be 10 digits, not including 1 at the beginning, ex: 5550001111.
-
-Phone provider can be one of the following: ATT, T-Mobile, Verizon, Sprint, or metroPCS.
-
-You need sendmessages.py to run this (found in my repository)
+Pick your bet (red, black, evens, odds, etc) and bet amount. 
 
 ---
 
-#### 5. SendMessages
+#### 12. Cashier Change Converter
 
-.py file used in Air Quality project to send messages
-
-To send text messages, import: `from sendmessages import sendtext` and call: `sendtext(phone number, phone provider, subject, message)`.
-
-Phone provider can be one of the following: ATT, T-Mobile, Verizon, Sprint, or metroPCS
-
-To send emails, import : `from sendmessages import sendemail` and call: `sendemail(email,subject, message)`
-
-
----
-
-#### 6. Cashier Change Converter
+Check: `currency_change.py`
 
 Function that gives the user, or Cashier, the bills and coins needed to give someone change after a cash purchase.
 
@@ -82,7 +124,7 @@ As an example, if the float is `112.33`, the result would be `1 $100 bill`, `1 $
 
 ---
 
-#### 7. Weather Tracker
+#### 13. Weather Tracker
 
 _In production... Extract weather data from openweathermap.
 Show hour summary, 4 hour summary, and 8 hour summary of max and min temps._
