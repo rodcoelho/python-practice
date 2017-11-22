@@ -1,18 +1,18 @@
-## Python Projects
-###### Basic warm up projects
-
+## Algorithms and Basic Projects
 
 #### 1. Cracking the Coding Interview Solutions
 
-PDF: https://inspirit.net.in/books/placements/Cracking%20the%20Coding%20Interview.pdf
+[Peek the file](https://github.com/rodcoelho/python_practice/blob/master/CrackingTheCodingInterview.py): `CrackingTheCodingInterview.py`
 
 Solutions in repo have been made into comments to allow for testing of individual solutions
+
+PDF: https://inspirit.net.in/books/placements/Cracking%20the%20Coding%20Interview.pdf
 
 ---
 
 #### 2. BST
 
-Check: `binary_search_tree.py`
+[Peek the file](https://github.com/rodcoelho/python_practice/blob/master/binary_search_tree.py): `binary_search_tree.py`
 
 Implementation of Binary Search Tree with insert, search, and print (preorder, inorder) functionality.
 
@@ -20,7 +20,7 @@ Implementation of Binary Search Tree with insert, search, and print (preorder, i
 
 #### 3. Stack
 
-Check: `traditional_stack.py`
+[Peek the file](https://github.com/rodcoelho/python_practice/blob/master/traditional_stack.py): `traditional_stack.py`
 
 Traditional implementation of a stack object without the use of python's list object
 
@@ -28,7 +28,7 @@ Traditional implementation of a stack object without the use of python's list ob
 
 #### 4. Queue
 
-Check: `traditional_queue.py`
+[Peek the file](https://github.com/rodcoelho/python_practice/blob/master/traditional_queue.py): `traditional_queue.py`
 
 Traditional implementation of a queue object without the use of python's list object
 
@@ -36,7 +36,7 @@ Traditional implementation of a queue object without the use of python's list ob
 
 #### 5. Linked List
 
-Check: `linked_list.py`
+[Peek the file](https://github.com/rodcoelho/python_practice/blob/master/linked_list.py): `linked_list.py`
 
 Implementation of a linked list without python's list function
 
@@ -45,7 +45,7 @@ Implementation of a linked list without python's list function
 
 #### 6. Binary Converter
 
-Check: `binary_converter.py`
+[Peek the file](https://github.com/rodcoelho/python_practice/blob/master/binary_converter.py): `binary_converter.py`
 
 `binary_to_decimal(num)` converts binary nums to decimal nums without using builtin functions or 3rd party packages
 
@@ -55,17 +55,17 @@ Check: `binary_converter.py`
 
 #### 7. Nested Array Board Game - Adventures of Barren Moor
 
-`$ python3 adventure_of_barren_moor.py`
-
 A game in which a magic compass that tells the user how far away the treasure is located.
 
 The player can choose north, south, east or west to move 1 space towards the treasure.
+
+[Clone](https://github.com/rodcoelho/python_practice/blob/master/adventure_of_barren_moor.py) and run `$ python3 adventure_of_barren_moor.py`
 
 ---
 
 #### 8. Roman Decimal Converter
 
-Check: `roman_decimal_converter.py` 
+[Peek the file](https://github.com/rodcoelho/python_practice/blob/master/roman_decimal_converter.py): `roman_decimal_converter.py` 
 
 `decimal_to_roman(ameri_num)` converts decimals to Roman numeral.
 
@@ -76,9 +76,9 @@ Check: `roman_decimal_converter.py`
 
 #### 9. Inspirational Alarm
 
-Daily alarm opens random 'inspirational' video from a list of urls from user's primary browser.
+[Clone](https://github.com/rodcoelho/python_practice/blob/master/InspirationalAlarm.py) and run `$ python InspirationalAlarm.py`
 
-`$ python3 InspirationalAlarm.py`
+Daily alarm opens random 'inspirational' video from a list of urls from user's primary browser.
 
 ---
 
@@ -106,7 +106,7 @@ And a screenshot from playing a few games:
 
 #### 11. Roulette Game w/GUI
 
-`$ python3 roulette.py`
+[Clone](https://github.com/rodcoelho/python_practice/blob/master/roulette.py) and run `$ python3 roulette.py`
 
 Simple Roulette game with pick GUI - User starts with $100. 
 
@@ -116,7 +116,7 @@ Pick your bet (red, black, evens, odds, etc) and bet amount.
 
 #### 12. Cashier Change Converter
 
-Check: `currency_change.py`
+[Peek the file](https://github.com/rodcoelho/python_practice/blob/master/currency_change.py): `currency_change.py`
 
 Function that gives the user, or Cashier, the bills and coins needed to give someone change after a cash purchase.
 
