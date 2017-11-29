@@ -10,11 +10,12 @@ def mortgage_calculator(price, int, months):
 monthly_payment = mortgage_calculator(price,int,months)
 print(monthly_payment)
 
-balance_list = []
-total_payment_due = months * monthly_payment
-total_payment_paid = 0
-for i in range(months):
-    total_payment_due -= monthly_payment
-    total_payment_paid += monthly_payment
-    balance_list.append(['month {}'.format(i),total_payment_due,total_payment_paid])
-print(balance_list)
+def print_monthly_status():
+    balance_list = []
+    total_payment_due = months * monthly_payment
+    total_payment_paid = 0
+    for i in range(months):
+        total_payment_due -= monthly_payment
+        total_payment_paid += monthly_payment
+        balance_list.append(['month {}'.format(i),total_payment_due,total_payment_paid])
+    print(balance_list)
