@@ -55,9 +55,9 @@ def main():
     #user picks
     option, index = pick(options, title)
 
-    print  """ 
+    print  (""" 
                 Human:  %s    PC: %s 
-                         """ % (option, pcChoice)
+                         """ % (option, pcChoice))
 
 
 
@@ -88,7 +88,7 @@ def main():
         game(Human.score, PC.score, start)
 
     else:
-        print "something went wrong"
+        print ("something went wrong")
         exit()
 
 
