@@ -59,10 +59,32 @@ def transfer(userfrom, userto, amount):
             ;
                     """.format(new_balto, datato[0][2]))
 
+def create_db():
+    cursor.execute(
+        """CREATE TABLE users(
+        pk INTEGER PRIMARY KEY AUTOINCREMENT,
+        username VARCHAR(32) UNIQUE,
+        password VARCHAR(64),
+        client_first_day VARCHAR,
+        permission INTEGER,
+        acctnum INTEGER
+        );"""
+    )
+    cursor.execute(
+        """CREATE TABLE accts(
+        pk INTEGER PRIMARY KEY AUTOINCREMENT,
+        acctnum INTEGER,
+        balance INTEGER
+        );"""
+    )
+
 if __name__ == '__main__':
     # connect to db
     connection = sqlite3.connect('privatebank.db')
     cursor = connection.cursor()
+
+    # create tables in db
+    # create_db()
 
     ## account creation
     # user_one, acct_num_1 = create_account('user_one', 'open_sesame1','2017-11-29','0')
