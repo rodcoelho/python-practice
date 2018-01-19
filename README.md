@@ -1,12 +1,10 @@
 ## Algorithms and Basic Projects
 
-#### 1. Cracking the Coding Interview Solutions
+#### 1. Balance Matching Brackets
 
-[Peek the file](https://github.com/rodcoelho/python_practice/blob/master/CrackingTheCodingInterview.py): `CrackingTheCodingInterview.py`
+[Peek the file](https://github.com/rodcoelho/python_practice/blob/master/balanced_matching_brackets.py): `balance_matching_brackets.py`
 
-Solutions in repo have been made into comments to allow for testing of individual solutions
-
-PDF: https://inspirit.net.in/books/placements/Cracking%20the%20Coding%20Interview.pdf
+Check if a string with brackets are matching: Ex: `[]{}()[({})]` is matching
 
 ---
 
