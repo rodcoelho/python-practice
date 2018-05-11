@@ -13,6 +13,7 @@ def find_x_in_range(x, lower, upper):
                 count += 1
     return count
 
+
 if __name__ == '__main__':
     assert find_x_in_range(3, 100, 250) == 35
     assert find_x_in_range(2, 10000, 12345) == 1120
