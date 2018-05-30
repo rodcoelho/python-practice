@@ -6,11 +6,11 @@
 def find_missing_num(arr):
     answer = -1
     skip = find_skip(arr)
-    print(skip)
-    for i in range(0, len(arr) - 1, skip):
-        if arr[i] + skip != arr[i + 1]:
-            answer = arr[i] + skip
-    return answer
+    if skip is not False:
+        for i in range(0, len(arr) - 1):
+            if arr[i] + skip != arr[i + 1]:
+                answer = arr[i] + skip
+        return answer
 
 
 def find_skip(arr):
@@ -19,11 +19,11 @@ def find_skip(arr):
     if skip == skip2:
         return skip
     else:
-        skip3 = arr[-2] - arr[-3]
-        if skip == skip3:
+        skip = arr[-2] - arr[-3]
+        skip2 = arr[2] - arr[1]
+        if skip == skip2:
             return skip
-        else:
-            return arr[2] - arr[1]
+    return False
 
 
 if __name__ == '__main__':
