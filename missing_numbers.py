@@ -4,7 +4,7 @@
 
 
 def find_missing_num(arr):
-    answer = -1
+    answer = None
     skip = find_skip(arr)
     if skip is not False:
         for i in range(0, len(arr) - 1):
@@ -29,7 +29,6 @@ def find_skip(arr):
 if __name__ == '__main__':
     assert find_missing_num([2, 4, 8, 10]) == 6, 'error1'
 
-# next we want to be able to do it for skips
-# then we want to be able to do it counting down
-
+# works for worst case big O of N
+# improve code to improve the best case scenario
 
