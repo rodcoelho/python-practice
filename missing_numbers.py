@@ -26,8 +26,32 @@ def find_skip(arr):
     return False
 
 
+def best_case(arr):
+    gap = None
+    for i in range(0, len(arr)-1):
+        temp_gap = abs(arr[i+1] - arr[i])
+        if gap is None:
+            gap = temp_gap
+        else:
+            if temp_gap > gap:
+                # if descending
+                if arr[i] > arr[i+1]:
+                    return arr[i] - gap
+                # if ascending
+                return arr[i] + gap
+            elif gap > temp_gap:
+                # if descending
+                if arr[i] > arr[i+1]:
+                    return arr[i] + temp_gap
+                # if ascending
+                return arr[i] - temp_gap
+
+
 if __name__ == '__main__':
-    assert find_missing_num([2, 4, 8, 10]) == 6, 'error1'
+    assert find_missing_num([2, 6, 8, 10]) == 4, 'error1'
+    assert best_case([2, 6, 8, 10]) == 4, 'error2'
+    assert best_case([10, 8, 4, 2]) == 6, 'error3'
+
 
 # works for worst case big O of N
 # improve code to improve the best case scenario
