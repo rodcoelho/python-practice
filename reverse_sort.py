@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 
 
-def my_sorter(l):
+def rev_sort(s):
+    s = list(s)
     unsorted = True
     while unsorted:
         unsorted = False
-        for i in range(len(l)-1):
-            if l[i] < l[i+1]:
-                l[i], l[i+1] = l[i+1], l[i]
+        for i in range(0,len(s)-1):
+            if s[i] < s[i+1]:
+                s[i], s[i+1] = s[i+1], s[i]
                 unsorted = True
-
-    print(l)
+    return ''.join(s)
 
 
 if __name__ == '__main__':
-    my_sorter([1, 5, 4, 6, 8, 0, 9])
+    assert rev_sort('abc') == 'cba', 'error1'
 
