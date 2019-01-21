@@ -8,9 +8,10 @@
 # Output:
 # For each test case print number of diagonals possible in N sided convex polygon.
 
+
 def get_possible_diagnols(num_of_sides):
-    # n(n-3)/2
     return num_of_sides * (num_of_sides - 3) / 2
+
 
 if __name__ == "__main__":
     print("begin assert tests")
