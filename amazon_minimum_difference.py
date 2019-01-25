@@ -3,12 +3,10 @@
 # Given an unsorted array, find the minimum difference between any pair in given array.
 
 # Input:
-
 # The first line of input contains an integer T denoting the number of test cases.
 # The first line of each test case is N, the size of array. Second line of the test case is the Array.
 
 # Output:
-
 # Print the minimum difference between any two pairs.
 
 
