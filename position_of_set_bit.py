@@ -9,7 +9,7 @@
 
 def get_position(num):
     binary = bin(num)[2:][::-1]
-    if binary.count('1') > 1:
+    if binary.count('1') != 1:
         return -1
     return binary.find('1') + 1
 
@@ -17,4 +17,5 @@ def get_position(num):
 if __name__ == '__main__':
     assert get_position(2) == 2, 'error 1'
     assert get_position(5) == -1, 'error 2'
+    assert get_position(0) == -1, 'error 3'
     print("TESTS PASSED")
