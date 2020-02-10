@@ -46,4 +46,16 @@ if __name__ == "__main__":
     assert create_dict(_poem)["flow'r"][0] == (0, 2), 'test 1'
     assert create_dict(_poem)['rose'][-1] == (2, 26), 'test 2'
     
+# PART 1
+# “rose”
+# "flow'r"
+# “Deep”
+# “Hearted”
+# “ “
+# “Bogaboga”
+
+
+# PART 2
+# Get “One perfect rose”
+    
     print("TESTS PASSED")        
