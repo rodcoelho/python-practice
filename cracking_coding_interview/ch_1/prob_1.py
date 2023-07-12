@@ -19,7 +19,7 @@ class UniqueChecker:
 			chars_checked.add(char)
 		return True
 
-class TestAdditionFunction(unittest.TestCase):
+class TestUniqueChecker(unittest.TestCase):
 	def setUp(self):
 		self.test_cases = [
 			("abcd", True),
