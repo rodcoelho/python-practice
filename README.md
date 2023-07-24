@@ -1,4 +1,4 @@
-## Algorithms and Basic Projects
+## Algorithms and Basic Practice
 
 #### 1. Balance Matching Brackets
 
