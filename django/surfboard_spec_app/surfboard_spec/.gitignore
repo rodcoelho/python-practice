@@ -1,0 +1,6 @@
+__pycache__
+surfboard_spec/config.py
+surfboard_spec/__pycache__
+base/migrations/
+base/__pycache__
+db.sqlite3
