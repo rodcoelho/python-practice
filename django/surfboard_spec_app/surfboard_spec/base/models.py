@@ -3,6 +3,11 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+"""
+Django has Models out of the bag. 
+Here we are taking advantage of their User Model (see Room's host attribute).
+"""
+
 class Topic(models.Model):
     # columns
 
@@ -20,9 +25,7 @@ class Room(models.Model):
     description = models.TextField(null=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
-    # host = models.
-    # topic = models.
-    # participants = models.
+    # participants = models...
 
     class Meta:
         ordering = ['-updated', '-created'] # sorts the data by elements in this list

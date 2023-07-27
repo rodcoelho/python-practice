@@ -25,8 +25,6 @@ def createRoom(request):
             form.save()  # save to db
             return redirect("home") # redirect them after to home
 
-
-
     context = {'form': form}
     return render(request, 'base/room_form.html', context)
 
