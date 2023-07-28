@@ -94,7 +94,7 @@
 
     {% include 'COMPONENT.html' %}
 
-    {% extends 'PARENT_TO_INHERIT.html' %}
+    {% extends 'PARENT_TO_INHERIT_FROM.html' %}
 
     {% block content %}
     {% endblock content %}
