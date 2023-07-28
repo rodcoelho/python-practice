@@ -69,7 +69,23 @@
     # Everytime you make a new model, you'll need to migrate the db to take in the new model
         python3 manage.py makemigrations
     # And then apply migrations to the database, see changes in <APP_NAME>/migrations/
-        python3 manage.py migrate         
+        python3 manage.py migrate    
+
+    # How to use Models within Views
+    MODEL_NAME.objects.all()                                      # get all objects for that Model
+    MODEL_NAME.objects.filter()                                   # filter objects by a column attribute (effectively no filter)
+    MODEL_NAME.objects.filter(ATTRIBUTE="xzy")                    # filter objects by some parameter == "xyz"
+    MODEL_NAME.objects.filter(ATTRIBUTE__CHILDATTRIBUTE="xzy")    # filter objects by accessing the child Model's parameter using the dunder "__"
+    MODEL_NAME.objects.filter(ATTRIBUTE__icontains="xzy")         # filter objects by some parameter containing xyz (not case sensitive)
+    model_object = MODEL_NAME.objects.filter(                     # filter object by using an OR statement
+        Q(ATTRIBUTE_1__icontains = q) |
+        Q(ATTRIBUTE_2__icontains = q)
+    )
+    model_object = MODEL_NAME.objects.filter(                     # filter object by using an AND statement
+        Q(ATTRIBUTE_1__icontains = q) &
+        Q(ATTRIBUTE_2__icontains = q)
+    )
+
 
 
     ### Templates ###
@@ -109,6 +125,8 @@
         {{form.as_p}}
         <input type="submit" value="Submit">
     </form>
+
+    {% url 'home' %}?q={{topic.name}}    # this is a query -> ?q=
 
 
 TIME: 2:06:23
