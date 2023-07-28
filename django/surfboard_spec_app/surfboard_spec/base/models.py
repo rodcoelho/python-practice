@@ -5,10 +5,10 @@ from django.contrib.auth.models import User
 
 """
 Django has Models out of the bag. 
-Here we are taking advantage of their User Model (see Room's host attribute).
+Here we are taking advantage of their User Model (see SurfboardRoom's host attribute).
 """
 
-class Topic(models.Model):
+class ShaperTopic(models.Model):
     # columns
 
     name = models.CharField(max_length=200)
@@ -16,11 +16,11 @@ class Topic(models.Model):
     def __str__(self):
         return self.name
 
-class Room(models.Model):
+class SurfboardRoom(models.Model):
     # columns
 
     host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
+    shaper_topic = models.ForeignKey(ShaperTopic, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
@@ -38,7 +38,7 @@ class Message(models.Model):
     # columns
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    surfboard_room = models.ForeignKey(SurfboardRoom, on_delete=models.CASCADE)
     body = models.TextField()
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)

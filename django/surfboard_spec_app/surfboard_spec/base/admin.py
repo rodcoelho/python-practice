@@ -2,8 +2,8 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Room, Topic, Message
+from .models import SurfboardRoom, ShaperTopic, Message
 
-admin.site.register(Room)
-admin.site.register(Topic)
+admin.site.register(SurfboardRoom)
+admin.site.register(ShaperTopic)
 admin.site.register(Message)
