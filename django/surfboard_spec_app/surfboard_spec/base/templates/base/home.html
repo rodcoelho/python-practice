@@ -2,8 +2,6 @@
 
 {% block content %}
 
-<h1>HOME TEMPLATE</h1>
-
 <style>
     .home-container{
         display:grid;
@@ -15,11 +13,11 @@
 <div class="home-container">
 
     <div>
-        <h3>Browse Topics</h3>
+        <h3>Browse By Shaper</h3>
         <hr>
 
         <div>
-            <a href="{% url 'home' %}">All Topics</a>
+            <a href="{% url 'home' %}">All</a>
         </div>
 
         {% for topic in topics %}
@@ -29,21 +27,35 @@
         </div>
         
         {% endfor %}
+
+        <div>
+            <h5>{{room_count}} surfboards available</h5>
+            <a href="{% url 'create-room' %}">Create Surfboard Room</a>
+            <br>    
+            <a href="{% url 'create-topic' %}">Create Shaper Topic</a>
+    
+            <hr>
+
+        </div>
+
     </div>
 
     <div>
 
-        <h5>{{room_count}} rooms available</h5>
-        <a href="{% url 'create-room' %}">Create Room</a>
+
+        
 
         <div>
             {% for room in rooms %}
 
                 <div>
-                    <a href="{% url 'update-room' room.id %}">Edit</a>
-                    <a href="{% url 'delete-room' room.id %}">Delete</a>
-                    <span> @{{room.host.username}}</span>
-                    <h5>{{room.id}} -- <a href="{% url 'room' room.id %}">  {{room.name}}</a> by {{room.topic.name}} </h5>
+                    <h4>{{room.id}} -- <a href="{% url 'room' room.id %}">  {{room.name}}</a> by {{room.topic.name}} </h4>
+
+                    <h5>
+                        <a href="{% url 'update-room' room.id %}">Edit</a>
+                        <a href="{% url 'delete-room' room.id %}">Delete</a>
+                        <span> @{{room.host.username}}</span>
+                    </h5>
                     
                     <hr>
                 </div>

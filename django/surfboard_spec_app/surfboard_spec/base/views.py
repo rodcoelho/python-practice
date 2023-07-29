@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.db.models import Q
 
 from .models import Room, Topic
-from .forms import RoomForm
+from .forms import RoomForm, TopicForm
 
 # Create your views here.
 
@@ -65,3 +65,16 @@ def deleteRoom(request, pk):
 
     context = {'obj': room}
     return render(request, 'base/delete.html', context)
+
+
+def createTopic(request):
+    form = TopicForm()
+
+    if request.method == "POST":
+        form = TopicForm(request.POST) # pass the POST values to the form
+        if form.is_valid():  # check if form is valid
+            form.save()  # save to db
+            return redirect("home") # redirect them after to home
+
+    context = {'form': form}
+    return render(request, 'base/topic_form.html', context)

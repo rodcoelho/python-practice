@@ -9,7 +9,7 @@ Here we are taking advantage of their User Model (see Room's host attribute).
 """
 
 class Topic(models.Model):
-    # columns
+    # shaper topics
 
     name = models.CharField(max_length=200)
 
@@ -17,7 +17,7 @@ class Topic(models.Model):
         return self.name
 
 class Room(models.Model):
-    # columns
+    # surfboard rooms
 
     host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
@@ -25,6 +25,7 @@ class Room(models.Model):
     description = models.TextField(null=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    link = models.TextField(null=True, blank=True)
     # participants = models...
 
     class Meta:
@@ -35,7 +36,7 @@ class Room(models.Model):
 
 
 class Message(models.Model):
-    # columns
+    # surfboard messages
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
