@@ -54,6 +54,34 @@
     # Within views, you CRUD the models in <APP_NAME>/models.py and inject/retrieve info from the files in <APP_NAME>/templates/<APP_NAME>/*.html (Django needs this path structure to combine all the templates in the project and in the app)
 
 
+    # How to use Models within Views
+    MODEL_NAME.objects.all()                                      # get all objects for that Model
+    MODEL_NAME.objects.filter()                                   # filter objects by a column attribute (effectively no filter)
+    MODEL_NAME.objects.filter(ATTRIBUTE="xzy")                    # filter objects by some parameter == "xyz"
+    MODEL_NAME.objects.filter(ATTRIBUTE__CHILDATTRIBUTE="xzy")    # filter objects by accessing the child Model's parameter using the dunder "__"
+    MODEL_NAME.objects.filter(ATTRIBUTE__icontains="xzy")         # filter objects by some parameter containing xyz (not case sensitive)
+    model_object = MODEL_NAME.objects.filter(                     # filter object by using an OR statement
+        Q(ATTRIBUTE_1__icontains = q) |
+        Q(ATTRIBUTE_2__icontains = q)
+    )
+    model_object = MODEL_NAME.objects.filter(                     # filter object by using an AND statement
+        Q(ATTRIBUTE_1__icontains = q) &
+        Q(ATTRIBUTE_2__icontains = q)
+    )
+
+    # Request objects
+    request.GET.get("username")
+    request.POST.get("username")
+    request.user.is_authenticated
+
+    # Auth within Views
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        # adds user session to db & to browser
+        login(request, user)
+        return redirect('home')
+
+
     ### Models ###
 
     # Models are ORMs that we can leverage to CRUD data. 
@@ -70,22 +98,6 @@
         python3 manage.py makemigrations
     # And then apply migrations to the database, see changes in <APP_NAME>/migrations/
         python3 manage.py migrate    
-
-    # How to use Models within Views
-    MODEL_NAME.objects.all()                                      # get all objects for that Model
-    MODEL_NAME.objects.filter()                                   # filter objects by a column attribute (effectively no filter)
-    MODEL_NAME.objects.filter(ATTRIBUTE="xzy")                    # filter objects by some parameter == "xyz"
-    MODEL_NAME.objects.filter(ATTRIBUTE__CHILDATTRIBUTE="xzy")    # filter objects by accessing the child Model's parameter using the dunder "__"
-    MODEL_NAME.objects.filter(ATTRIBUTE__icontains="xzy")         # filter objects by some parameter containing xyz (not case sensitive)
-    model_object = MODEL_NAME.objects.filter(                     # filter object by using an OR statement
-        Q(ATTRIBUTE_1__icontains = q) |
-        Q(ATTRIBUTE_2__icontains = q)
-    )
-    model_object = MODEL_NAME.objects.filter(                     # filter object by using an AND statement
-        Q(ATTRIBUTE_1__icontains = q) &
-        Q(ATTRIBUTE_2__icontains = q)
-    )
-
 
 
     ### Templates ###
