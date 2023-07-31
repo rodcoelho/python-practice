@@ -122,11 +122,11 @@
     
     <form method="POST" action="">
         {% csrf_token %}
-        {{form.as_p}}
+        {{form.as_p}}           # injects form with paragraph styling
         <input type="submit" value="Submit">
     </form>
 
     {% url 'home' %}?q={{topic.name}}    # this is a query -> ?q=
 
 
-TIME: 2:22:54
+TIME: 3:01:28
