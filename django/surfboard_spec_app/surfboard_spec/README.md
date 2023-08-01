@@ -55,6 +55,8 @@
 
 
     # How to use Models within Views
+    MODEL_NAME.objects.create(...)                                # create a new object
+    MODEL_NAME.CHILD_NAME_set.all()                               # get children of the parent model <parent>.<child>_set.all()
     MODEL_NAME.objects.all()                                      # get all objects for that Model
     MODEL_NAME.objects.filter()                                   # filter objects by a column attribute (effectively no filter)
     MODEL_NAME.objects.filter(ATTRIBUTE="xzy")                    # filter objects by some parameter == "xyz"
@@ -140,5 +142,8 @@
 
     {% url 'home' %}?q={{topic.name}}    # this is a query -> ?q=
 
+    {% if request.user.is_authenticated %}
+    {% endif %}
 
-TIME: 3:01:28
+
+TIME: 3:15:00
