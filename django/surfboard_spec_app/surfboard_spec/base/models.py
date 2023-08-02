@@ -26,7 +26,7 @@ class Room(models.Model):
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     link = models.TextField(null=True, blank=True)
-    # participants = models...
+    participants = models.ManyToManyField(User, related_name='participants', blank=True)
 
     class Meta:
         ordering = ['-updated', '-created'] # sorts the data by elements in this list

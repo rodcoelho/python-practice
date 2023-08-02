@@ -89,6 +89,7 @@ def home(request):
 def room(request, pk):
     room = Room.objects.get(id=pk)
     room_messages = room.message_set.all().order_by("-created") # get children of the parent model, message in this case (<parent>.<child>_set.all())
+    participants = room.participants.all()
 
     if request.method == "POST":
         room_message = Message.objects.create(
@@ -96,9 +97,13 @@ def room(request, pk):
             room=room,
             body=request.POST.get("body")
         )
+
+        # add user to participants now that he has commented
+        if request.user not in participants:
+            room.participants.add(request.user)
         return redirect("room", pk=room.id)
 
-    context = {"room": room, "room_messages": room_messages}
+    context = {"room": room, "room_messages": room_messages, "participants": participants}
     return render(request, 'base/room.html', context)
 
 
@@ -161,3 +166,18 @@ def createTopic(request):
 
     context = {'form': form}
     return render(request, 'base/topic_form.html', context)
+
+
+@login_required(login_url="login")
+def deleteMessage(request, pk):
+    message = Message.objects.get(id=pk)
+
+    if request.user != message.user:
+        return HttpResponse("You are not allowed to perform action")
+
+    if request.method == 'POST':
+        message.delete()
+        return redirect("home")
+
+    context = {'obj_to_delete': message}
+    return render(request, 'base/delete.html', context)
