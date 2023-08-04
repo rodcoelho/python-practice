@@ -96,6 +96,13 @@
     #   null=True                   # can be null
     #   blank=True                  # can be blank
 
+    # Model fields
+    models.ForeignKey(OTHER_MODEL_CLASS)
+    models.CharField()
+    models.TextField()
+    models.DateTimeField()
+    models.ManyToManyField(OTHER_MODEL_CLASS, related_name='NAME_OF_THIS_FIELD') # we only need related_name param if OTHER_MODEL_CLASS is already being referenced in another field as a foreign key
+
     # Everytime you make a new model, you'll need to migrate the db to take in the new model
         python3 manage.py makemigrations
     # And then apply migrations to the database, see changes in <APP_NAME>/migrations/
