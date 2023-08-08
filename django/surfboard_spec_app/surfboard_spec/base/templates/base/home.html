@@ -13,20 +13,7 @@
 <div class="home-container">
 
     <div>
-        <h3>Browse By Shaper</h3>
-        <hr>
-
-        <div>
-            <a href="{% url 'home' %}">All</a>
-        </div>
-
-        {% for topic in topics %}
-
-        <div>
-            <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
-        </div>
-        
-        {% endfor %}
+        {% include 'base/topics_component.html' %}
 
         <div>
             <h5>{{room_count}} surfboards available</h5>
@@ -41,40 +28,11 @@
 
 
     <div>
-        <div>
-
-            {% for room in rooms %}
-                <div>
-                    <h4>{{room.id}} -- <a href="{% url 'room' room.id %}">  {{room.name}}</a> by {{room.topic.name}} </h4>
-
-                    <h5>
-                        {% if request.user == room.host %}
-                        <a href="{% url 'update-room' room.id %}">Edit</a>
-                        <a href="{% url 'delete-room' room.id %}">Delete</a>
-                        {% endif %}
-                        <span> @{{room.host.username}}</span>
-                    </h5>
-                    
-                    <hr>
-                </div>
-            {% endfor %}
-
-        </div>
+        {% include 'base/feed_component.html' %}
     </div>
 
     <div>
-        <h3>Recent Activity</h3>
-
-        <hr>
-        {% for room_message in room_messages %}
-
-        <div>
-            <small>@{{ room_message.user }} {{ room_message.created | timesince }} ago</small>
-            <small>replied to "{{ room_message.room }}"</small>
-            <p>{{room_message}}</p>
-        </div>
-        {% endfor %}
-
+        {% include 'base/activity_component.html' %}
     </div>
 
     
