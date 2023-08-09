@@ -153,4 +153,11 @@
     {% endif %}
 
 
-TIME: 3:53:20
+# static files
+
+    {% load static %}                           # to access the static folder
+    "{% static 'images/surfboards.jpeg' %}"     # to access the static file
+
+
+
+TIME: 3:59:06
