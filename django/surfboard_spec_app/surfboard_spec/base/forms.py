@@ -9,6 +9,7 @@ class RoomForm(ModelForm):
         model = Room
         fields = '__all__' # creates form based on fields from the Room Model Class
         # fields = ["name", "body"] # creates form based on fields on this list
+        exclude = ['host', 'participants'] # excludes from the form
 
 class TopicForm(ModelForm):
     class Meta:
