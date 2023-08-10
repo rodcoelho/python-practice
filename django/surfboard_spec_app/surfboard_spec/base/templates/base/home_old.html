@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<style>
+    .home-container{
+        display:grid;
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+
+</style>
+
+<div class="home-container">
+
+    <div>
+        {% include 'base/topics_component.html' %}
+
+        <div>
+            <h5>{{room_count}} surfboards available</h5>
+            <a href="{% url 'create-room' %}">Create Surfboard Room</a>
+            <br>    
+            <a href="{% url 'create-topic' %}">Create Shaper Topic</a>
+    
+            <hr>
+
+        </div>
+    </div>
+
+
+    <div>
+        {% include 'base/feed_component.html' %}
+    </div>
+
+    <div>
+        {% include 'base/activity_component.html' %}
+    </div>
+
+    
+
+</div> 
+
+{% endblock content %}
