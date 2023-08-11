@@ -117,15 +117,24 @@ def createRoom(request):
     form = RoomForm()
 
     if request.method == "POST":
+        topic_name = request.POST.get("topic")
+        topic, created = Topic.objects.get_or_create(name=topic_name)
+
         form = RoomForm(request.POST) # pass the POST values to the form
-        if form.is_valid():  # check if form is valid
-
-            room = form.save(commit=False)  # save as instance locally
-            room.host = request.user # edit the form so that the host is the user
-            room.save()
-            return redirect("home") # redirect them after to home
-
-    context = {'form': form}
+        
+        Room.objects.create(
+            host=request.user,
+            topic=topic,
+            name=request.POST.get('name'),
+            description=request.POST.get('description'),
+        )
+        # if form.is_valid():  # check if form is valid
+        #     room = form.save(commit=False)  # save as instance locally
+        #     room.host = request.user # edit the form so that the host is the user
+        #     room.save()
+        return redirect("home") # redirect them after to home
+    topics = Topic.objects.all()
+    context = {'form': form, "topics": topics}
     return render(request, 'base/room_form.html', context)
 
 def userProfile(request, pk):
@@ -146,13 +155,16 @@ def updateRoom(request, pk):
         return HttpResponse("You are not allowed to perform action")
 
     if request.method == "POST":
-        form = RoomForm(request.POST, instance=room) # 
+        topic_name = request.POST.get("topic")
+        topic, created = Topic.objects.get_or_create(name=topic_name) # gets or creates, created returns True if it's new else False
+        room.name = request.POST.get("name")
+        room.topic = topic
+        room.description = request.POST.get("description")
+        room.save()
+        return redirect("home")
 
-        if form.is_valid():
-            form.save()
-            return redirect("home")
-
-    context = {'form': form}
+    topics = Topic.objects.all()
+    context = {'form': form, 'topics': topics, "room": room}
     return render(request, 'base/room_form.html', context)
 
 
