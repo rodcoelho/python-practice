@@ -220,4 +220,5 @@ def updateUser(request):
         if form.is_valid():
             form.save()  
             return redirect("user-profile", pk=user.id)
+        
     return render(request, 'base/update_user.html', context)
