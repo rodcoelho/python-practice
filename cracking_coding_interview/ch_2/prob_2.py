@@ -5,6 +5,11 @@ import unittest
 from structlinks.DataStructures import LinkedList
 
 
+"""
+Implement an algorithm to find thr Nth to last element of a singly linked list.
+"""
+
+
 class CustomLLNode:
 	def __init__(self, value):
 		self.value = value
@@ -103,3 +108,4 @@ class TestLinkedListFinder(unittest.TestCase):
 
 if __name__ == "__main__":
 	unittest.main()
+
