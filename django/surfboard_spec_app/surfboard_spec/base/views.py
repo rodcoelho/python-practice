@@ -9,7 +9,7 @@ from django.http import HttpResponse
 
 
 from .models import Room, Topic, Message
-from .forms import RoomForm, TopicForm
+from .forms import RoomForm, TopicForm, UserForm
 
 # Create your views here.
 
@@ -49,7 +49,6 @@ def logoutUser(request):
     return redirect("home")
 
 def registerPage(request):
-    
     form = UserCreationForm()
     context = {"form": form}
 
@@ -209,3 +208,17 @@ def deleteMessage(request, pk):
 
     context = {'obj_to_delete': message}
     return render(request, 'base/delete.html', context)
+
+@login_required(login_url="login")
+def updateUser(request):
+    user = request.user
+    form = UserForm(instance=user)
+    context = {"form": form}
+
+    if request.method == "POST":
+        form = UserForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()  
+            return redirect("user-profile", pk=user.id)
+
+    return render(request, 'base/update_user.html', context)
