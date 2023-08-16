@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+
+
+class CustomLLNode:
+	def __init__(self, value):
+		self.value = value
+		self.head = None
+		self.tail = None
+
+
+class CustomLL:
+	def __init__(self):
+		self.head = None
+		self.tail = None
+
+	def add(self, value):
+		if self.head:
+			n = CustomLLNode(value)
+			old_n = self.tail
+			old_n.tail=n
+			n.head=old_n
+			self.tail = n
+		else:
+			n = CustomLLNode(value)
+			self.head = n
+			self.tail = n
+		return n
+
+	def pop(self):
+		ret_val = None
+		if self.tail == self.head:
+			ret_val = self.head
+			self.tail, self.head = None, None
+		if self.tail:
+			ret_val = self.tail
+			new_t = self.tail.head
+			new_t.tail = None
+			self.tail = new_t
+		return ret_val.value
+
+	def get_kth_node(self, k):
+		current = None
+		for i in range(k):
+			if i == 0:
+				current = self.head
+				last_val = self.head.value
+			else:
+				current = current.tail
+				
+		return current.value
+
+	def get_kth_node_rev(self, k):
+		current = None
+		for i in range(k):
+			if i == 0:
+				current = self.tail
+				last_val = self.tail.value
+			else:
+				current = current.head
+				
+		return current.value
