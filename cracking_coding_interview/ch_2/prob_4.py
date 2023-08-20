@@ -40,7 +40,7 @@ class LinkedListAdder:
 				initial_head_check = False
 				current = ll.head
 			else:
-				current = current.tail
+				current = current.node_tail
 
 			if current:
 				digits = str(current.value) + digits
@@ -48,7 +48,7 @@ class LinkedListAdder:
 			if final_round and end:
 				break
 
-			if not current.tail.tail:
+			if not current.node_tail.node_tail:
 				final_round = True
 
 		return int(digits)
@@ -83,8 +83,8 @@ class TestLinkedListAdder(unittest.TestCase):
 		self.assertEqual(lla.output_sum, self.expected_sum_values, "failed to sum")
 
 		self.assertEqual(final_ll.head.value, 8)
-		self.assertEqual(final_ll.head.tail.value, 0)
-		self.assertEqual(final_ll.head.tail.tail.value, 8)
+		self.assertEqual(final_ll.head.node_tail.value, 0)
+		self.assertEqual(final_ll.head.node_tail.node_tail.value, 8)
 
 
 if __name__ == "__main__":

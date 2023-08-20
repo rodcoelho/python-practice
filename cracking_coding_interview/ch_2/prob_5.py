@@ -14,9 +14,9 @@ class LLLoopDetector:
 	def detect(self, ll):
 		one_step, two_step = ll.head, ll.head
 
-		while two_step and two_step.tail:
-			two_step = two_step.tail.tail
-			one_step = one_step.tail
+		while two_step and two_step.node_tail:
+			two_step = two_step.node_tail.node_tail
+			one_step = one_step.node_tail
 
 			if one_step is two_step:
 				break
@@ -24,8 +24,8 @@ class LLLoopDetector:
 		one_step = ll.head
 
 		while two_step is not one_step:
-			two_step = two_step.tail
-			one_step = one_step.tail
+			two_step = two_step.node_tail
+			one_step = one_step.node_tail
 
 		return two_step.value
 
@@ -37,8 +37,8 @@ class TestLLLoopDetector(unittest.TestCase):
 		for node_val in ll_list:	
 			self.ll.add(node_val)
 
-		self.ll.head.head =	self.ll.tail
-		self.ll.tail.tail = self.ll.head
+		self.ll.head.node_head = self.ll.tail
+		self.ll.tail.node_tail = self.ll.head
 
 
 	def test_LLoopDetector_detect(self):

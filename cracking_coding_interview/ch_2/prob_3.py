@@ -12,10 +12,10 @@ class NodeDeleter:
 		pass
 
 	def delete(self, node):
-		head = node.head
-		tail = node.tail
-		head.tail = tail
-		tail.head = head
+		head = node.node_head
+		tail = node.node_tail
+		head.node_tail = tail
+		tail.node_head = head
 
 
 class TestNodeDeleter(unittest.TestCase):
@@ -44,12 +44,12 @@ class TestNodeDeleter(unittest.TestCase):
 				initial_head_check = False
 				current = self.cll.head
 			else:
-				current = current.tail
+				current = current.node_tail
 
 			self.assertNotEqual(current.value, self.middle_node_value, "failed, we found the deleted node!")
 			found_values.append(current.value)
 
-			if not current.tail.tail:
+			if not current.node_tail.node_tail:
 				end = True
 
 		self.assertNotIn(5, found_values)

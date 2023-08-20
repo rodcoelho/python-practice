@@ -4,8 +4,8 @@
 class CustomLLNode:
 	def __init__(self, value):
 		self.value = value
-		self.head = None
-		self.tail = None
+		self.node_head = None
+		self.node_tail = None
 
 
 class CustomLL:
@@ -17,8 +17,8 @@ class CustomLL:
 		if self.head:
 			n = CustomLLNode(value)
 			old_n = self.tail
-			old_n.tail=n
-			n.head=old_n
+			old_n.node_tail=n
+			n.node_head=old_n
 			self.tail = n
 		else:
 			n = CustomLLNode(value)
@@ -33,8 +33,8 @@ class CustomLL:
 			self.tail, self.head = None, None
 		if self.tail:
 			ret_val = self.tail
-			new_t = self.tail.head
-			new_t.tail = None
+			new_t = self.tail.node_head
+			new_t.node_tail = None
 			self.tail = new_t
 		return ret_val.value
 
@@ -45,7 +45,7 @@ class CustomLL:
 				current = self.head
 				last_val = self.head.value
 			else:
-				current = current.tail
+				current = current.node_tail
 				
 		return current.value
 
@@ -56,6 +56,6 @@ class CustomLL:
 				current = self.tail
 				last_val = self.tail.value
 			else:
-				current = current.head
+				current = current.node_head
 				
 		return current.value
