@@ -20,12 +20,13 @@ class Portfolio:
             
             for row in file:
                 try:
-                    ticker, shares, price = row.strip().split(" ")
+                    row = [x for x in row.strip().split(" ") if x]
+                    ticker, shares, price = row
                     shares, price = int(shares), float(price)
                     rows.append([ticker, shares, price])
                     self._add_to_portfolio_value(shares, price)
                 except Exception as e:
-                    print("Couldn't parse: {} {} {}".format(ticker, shares, price))
+                    print("Couldn't parse: {}".format(row))
                     print("Reason: {}".format(e))
         return rows
     
