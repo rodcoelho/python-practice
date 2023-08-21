@@ -2,9 +2,12 @@
 
 import unittest
 
+DEFAULT_FILE_PATH = 'Data/portfolio.dat'
+
 
 class Portfolio:
-    def __init__(self):
+    def __init__(self, path=DEFAULT_FILE_PATH):
+        self.path = path
         self.portfolio_value = 0
         self.positions = self._get_positions()
 
@@ -13,12 +16,17 @@ class Portfolio:
 
     def _read_file(self):
         rows = []
-        with open('Data/portfolio.dat', 'r') as file:
+        with open(self.path, 'r') as file:
+            
             for row in file:
-                ticker, shares, price = row.strip().split(" ")
-                shares, price = int(shares), float(price)
-                rows.append([ticker, shares, price])
-                self._add_to_portfolio_value(shares, price)
+                try:
+                    ticker, shares, price = row.strip().split(" ")
+                    shares, price = int(shares), float(price)
+                    rows.append([ticker, shares, price])
+                    self._add_to_portfolio_value(shares, price)
+                except Exception as e:
+                    print("Couldn't parse: {} {} {}".format(ticker, shares, price))
+                    print("Reason: {}".format(e))
         return rows
     
     def _add_to_portfolio_value(self, shares, price):
@@ -26,10 +34,9 @@ class Portfolio:
 
 
 class TestPortfolio(unittest.TestCase):
-    def test_Portfolio_get_value(self):
+    def test_Portfolio_position(self):
         p = Portfolio()
         self.assertEqual(p.portfolio_value, 44671.15)
-        print(p.positions)
 
 
 if __name__ == "__main__":
