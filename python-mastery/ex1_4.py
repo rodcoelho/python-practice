@@ -2,7 +2,7 @@
 
 import unittest
 
-from ex1_3 import Portfolio
+from pcost import Portfolio
 
 class TestPortfolio(unittest.TestCase):
     def test_Portfolio_position(self):
