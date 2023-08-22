@@ -148,11 +148,11 @@ def read_rides_as_class_with_slots(filename):
 
 
 if __name__ == '__main__':
-    rows = read_rides_as_tuples('Data/ctabus.csv')
-    rows = read_rides_as_dict('Data/ctabus.csv')
-    rows = read_rides_as_class('Data/ctabus.csv')
-    rows = read_rides_as_named_tuple('Data/ctabus.csv')
-    rows = read_rides_as_class_with_slots('Data/ctabus.csv')
+    tuple_rows = read_rides_as_tuples('Data/ctabus.csv')
+    dict_rows = read_rides_as_dict('Data/ctabus.csv')
+    class_rows = read_rides_as_class('Data/ctabus.csv')
+    named_tuple_rows = read_rides_as_named_tuple('Data/ctabus.csv')
+    class_with_slots_rows = read_rides_as_class_with_slots('Data/ctabus.csv')
 
     """
     Function Name       : read_rides_as_tuples
