@@ -10,6 +10,9 @@ class Empty:
         return isinstance(other, Empty)
 
 
+empty = Empty()
+
+
 class MultiStack:
     def __init__(self, num_of_stacks, len_of_stacks):
         self.len_of_stacks = len_of_stacks
@@ -67,21 +70,21 @@ class TestMultiStack(unittest.TestCase):
         ms.push(1,1)
         ms.push(2,2)
         ms.push(2,2)
-        self.assertEqual(ms.stack_list, [0,0,Empty(), Empty(), Empty(), 1, 1, Empty(), Empty(), Empty(), 2, 2, Empty(), Empty(), Empty()])
+        self.assertEqual(ms.stack_list, [0,0,empty, empty, empty, 1, 1, empty, empty, empty, 2, 2, empty, empty, empty])
         
         # test regular pop
         actual = ms.pop(0)
         self.assertEqual(actual, 0)
-        self.assertEqual(ms.stack_list, [0,Empty(),Empty(), Empty(), Empty(), 1, 1, Empty(), Empty(), Empty(), 2, 2, Empty(), Empty(), Empty()])
+        self.assertEqual(ms.stack_list, [0,empty, empty, empty, empty, 1, 1, empty, empty, empty, 2, 2, empty, empty, empty])
         
         actual = ms.pop(0)
         self.assertEqual(actual, 0)
-        self.assertEqual(ms.stack_list, [Empty(),Empty(),Empty(), Empty(), Empty(), 1, 1, Empty(), Empty(), Empty(), 2, 2, Empty(), Empty(), Empty()])
+        self.assertEqual(ms.stack_list, [empty, empty, empty, empty, empty, 1, 1, empty, empty, empty, 2, 2, empty, empty, empty])
 
         actual1, actual2 = ms.pop(1), ms.pop(2)
         self.assertEqual(actual1, 1)
         self.assertEqual(actual2, 2)
-        self.assertEqual(ms.stack_list, [Empty(),Empty(),Empty(), Empty(), Empty(), 1, Empty(), Empty(), Empty(), Empty(), 2, Empty(), Empty(), Empty(), Empty()])
+        self.assertEqual(ms.stack_list, [empty, empty, empty, empty, empty, 1, empty, empty, empty, empty, 2, empty, empty, empty, empty])
 
         # test overflow stack edgecase
         ms.push('a', 0)
@@ -89,19 +92,19 @@ class TestMultiStack(unittest.TestCase):
         ms.push('a', 0)
         ms.push('a', 0)
         ms.push('a', 0)
-        self.assertEqual(ms.stack_list, ['a','a','a','a','a', 1, Empty(), Empty(), Empty(), Empty(), 2, Empty(), Empty(), Empty(), Empty()])
+        self.assertEqual(ms.stack_list, ['a','a','a','a','a', 1, empty, empty, empty, empty, 2, empty, empty, empty, empty])
 
         actual = ms.push('a', 0)
         self.assertEqual(actual, "stack is full")
-        self.assertEqual(ms.stack_list, ['a','a','a','a','a', 1, Empty(), Empty(), Empty(), Empty(), 2, Empty(), Empty(), Empty(), Empty()])
+        self.assertEqual(ms.stack_list, ['a','a','a','a','a', 1, empty, empty, empty, empty, 2, empty, empty, empty, empty])
 
         # test stack is empty edgecase
         actual = ms.pop(1)
         self.assertEqual(actual, 1)
-        self.assertEqual(ms.stack_list, ['a','a','a','a','a', Empty(), Empty(), Empty(), Empty(), Empty(), 2, Empty(), Empty(), Empty(), Empty()])
+        self.assertEqual(ms.stack_list, ['a','a','a','a','a', empty, empty, empty, empty, empty, 2, empty, empty, empty, empty])
         actual = ms.pop(1)
         self.assertEqual(actual, "stack is empty")
-        self.assertEqual(ms.stack_list, ['a','a','a','a','a', Empty(), Empty(), Empty(), Empty(), Empty(), 2, Empty(), Empty(), Empty(), Empty()])
+        self.assertEqual(ms.stack_list, ['a','a','a','a','a', empty, empty, empty, empty, empty, 2, empty, empty, empty, empty])
 
 
 if __name__ == "__main__":
