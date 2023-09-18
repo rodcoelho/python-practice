@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+"""
+Implement a function to check if a tree is balanced (i.e. no two leaf nodes differ in distance to the root by more than 1)
+"""
+
 import unittest
 
 class Node:
