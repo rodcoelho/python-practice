@@ -28,7 +28,9 @@ class Portfolio:
                 file = csv.reader(f)
                 headers = next(file)
                 for ticker, shares, price in file:
-                    shares, price = int(shares), float(price)
+                    shares = int(shares)
+                    price = float(price)
+
                     rows.append([ticker, shares, price])
                     self.aggregate_shares[ticker] += shares
         else:
@@ -37,10 +39,12 @@ class Portfolio:
                     try:
                         row = [x for x in row.strip().split(" ") if x]
                         ticker, shares, price = row
-                        shares, price = int(shares), float(price)
+                        shares = int(shares)
+                        price = float(price)
+                        
                         rows.append([ticker, shares, price])
                         self._add_to_portfolio_value(shares, price)
-                        self.aggregate_shares[row['name']] += row['shares']
+                        self.aggregate_shares[ticker] += shares
                     except Exception as e:
                         print("Couldn't parse: {}".format(row))
                         print("Reason: {}".format(e))
