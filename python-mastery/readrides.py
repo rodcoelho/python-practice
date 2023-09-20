@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import csv
+import collections
 
 from malloc import measure_memory
 
@@ -55,6 +56,78 @@ def read_rides_as_dict(filename):
             }
             records.append(record)
     return records
+
+
+@measure_memory
+def read_rides_as_dict_via_columnar(filename):
+    '''
+    # Custom columnar type that we can add dicts to and will save as columnar storage
+
+    RideData:
+        routes = []
+        dates = []
+s        daytypes = []
+        numrides = []
+        
+    '''
+    records = RideData()
+    with open(filename) as f:
+        rows = csv.reader(f)
+        headings = next(rows)     # Skip headers
+        for row in rows:
+            route = row[0]
+            date = row[1]
+            daytype = row[2]
+            rides = int(row[3])
+            record = {
+                'route': route,
+                'date': date,
+                'daytype': daytype,
+                'rides': rides,
+            }
+            records.append(record)
+    return records
+
+class RideData(collections.abc.Sequence):
+    """
+    Columnar storage of each row
+    """
+    def __init__(self):
+        # Columns
+        self.routes = []      
+        self.dates = []
+        self.daytypes = []
+        self.numrides = []
+        
+    def __len__(self):
+        return len(self.routes)
+
+    def __getitem__(self, index):
+        if isinstance(index, int):
+            return { 
+                'route': self.routes[index],
+                'date': self.dates[index],
+                'daytype': self.daytypes[index],
+                'rides': self.numrides[index] 
+            }
+        elif isinstance(index, slice):
+            start, stop, step = index.start, index.stop, index.step
+            step = 1 if step is None else step
+            return [
+                {
+                    "route": self.routes[x],
+                    "date": self.dates[x],
+                    "daytype": self.daytypes[x],
+                    "ride": self.numrides[x],
+                }
+                for x in range(start, stop, step)
+            ]
+
+    def append(self, d):
+        self.routes.append(d['route'])
+        self.dates.append(d['date'])
+        self.daytypes.append(d['daytype'])
+        self.numrides.append(d['rides'])
 
 
 # A class
