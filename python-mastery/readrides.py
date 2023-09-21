@@ -59,34 +59,112 @@ def read_rides_as_dict(filename):
 
 
 @measure_memory
-def read_rides_as_dict_via_columnar(filename):
+def read_rides_as_dict_via_columnar(filename, types):
     '''
     # Custom columnar type that we can add dicts to and will save as columnar storage
 
     RideData:
         routes = []
         dates = []
-s        daytypes = []
+        daytypes = []
         numrides = []
         
     '''
+    headers = ['route', 'date', 'daytype', 'rides']
     records = RideData()
     with open(filename) as f:
         rows = csv.reader(f)
         headings = next(rows)     # Skip headers
         for row in rows:
-            route = row[0]
-            date = row[1]
-            daytype = row[2]
-            rides = int(row[3])
             record = {
-                'route': route,
-                'date': date,
-                'daytype': daytype,
-                'rides': rides,
+                header:func(data) for data, header, func in zip(row, headers, types)
             }
             records.append(record)
     return records
+
+
+class DynamicColumnarData:
+    def __init__(self):
+        self._attributes = []
+
+    def __len__(self):
+        if self._attributes:
+            return len(getattr(self, self._attributes[0]))
+        else:
+            return 0
+
+    def __getitem__(self, index):
+        if isinstance(index, int):
+            return { 
+                attr: getattr(self, attr)[index] for attr in self._attributes
+            }
+        elif isinstance(index, slice):
+            start, stop, step = index.start, index.stop, index.step
+            step = 1 if step is None else step
+            return [
+                {attr: getattr(self, attr)[x] for attr in self._attributes}
+                for x in range(start, stop, step)
+            ]
+
+    def append(self, d):
+        for attr, val in d.items():
+            current = getattr(self, attr)
+            current.append(val)
+            setattr(self, attr, current)
+
+
+class DynamicColumnarDataCollection(collections.abc.Sequence):
+    def __init__(self, filename, types):
+        self.filename = filename
+        self.is_csv = self._file_is_csv()
+        
+        self.file = None
+        self.headers = None
+        self.types = types
+
+        self.data = DynamicColumnarData()
+        
+        
+    def _file_is_csv(self):
+        return True if self.filename.split('.')[-1] == "csv" else False
+
+    def _add_dynamic_attributes(self):
+        """set header as attributes with empty lists"""
+        for x in range(len(self.headers)):
+            setattr(self.data, self.headers[x], [])
+            self.data._attributes.append(self.headers[x])
+
+    def collect(self):
+        if self._file_is_csv:
+            with open(self.filename) as the_file:
+                self.file = csv.reader(the_file)
+                self.headers = next(self.file)
+                self._aggregate_data()
+            
+        else:
+            with open(self.filename, 'r') as the_file:
+                self.headers = next(self.file)
+                self.file = ([x for x in row.strip().split(" ") if x] for row in self.file)
+                self._aggregate_data()
+
+    def _aggregate_data(self):
+        self._add_dynamic_attributes()
+
+        for line in self.file:
+            self.data.append({key:func(val) for key, val, func in zip(self.headers, line, self.types)})
+
+
+    def __getitem__(self, index):
+        if isinstance(index, int):
+            return self.data[index]
+        elif isinstance(index, slice):
+            start, stop, step = index.start, index.stop, index.step
+            step = 1 if step is None else step
+            return self.data[start, stop, step]
+
+    def __len__(self):
+        return len(self.data)
+
 
 class RideData(collections.abc.Sequence):
     """

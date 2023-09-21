@@ -7,7 +7,7 @@ from ex2_2 import ex2_2_q1, ex2_2_q2, ex2_2_q3, ex2_2_q4
 
 
 class TestEx2(unittest.TestCase):
-    rides = read_rides_as_dict_via_columnar("Data/ctabus.csv")
+    rides = read_rides_as_dict_via_columnar("Data/ctabus.csv", types=[str, str, str, int])
     print(rides[0:10])
 
     def test_ex2_2_q1(self):
