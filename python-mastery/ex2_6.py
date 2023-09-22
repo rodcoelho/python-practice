@@ -9,7 +9,6 @@ class TestDynamicColumnarDataCollection(unittest.TestCase):
 
         data = DynamicColumnarDataCollection('Data/ctabus.csv', [str, str, str, int])
         data.collect()
-        print(data)
 
         self.assertEqual(len(data), 577563)
 
@@ -19,8 +18,14 @@ class TestDynamicColumnarDataCollection(unittest.TestCase):
 
         self.assertEqual(data[2], {'route': '6', 'date': '01/01/2001', 'daytype': 'U', 'rides': 6048})
 
-        # TODO fix slice
-        self.assertEqual(data[0:2], {'route': '6', 'date': '01/01/2001', 'daytype': 'U', 'rides': 6048})
+        self.assertEqual(
+            data[0:3], 
+            [
+                {'route': '3', 'date': '01/01/2001', 'daytype': 'U', 'rides': 7354},
+                {'route': '4', 'date': '01/01/2001', 'daytype': 'U', 'rides': 9288}, 
+                {'route': '6', 'date': '01/01/2001', 'daytype': 'U', 'rides': 6048}
+            ]
+        )
 
 
 if __name__ == "__main__":

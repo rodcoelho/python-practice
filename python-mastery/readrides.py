@@ -155,12 +155,7 @@ class DynamicColumnarDataCollection(collections.abc.Sequence):
 
 
     def __getitem__(self, index):
-        if isinstance(index, int):
-            return self.data[index]
-        elif isinstance(index, slice):
-            start, stop, step = index.start, index.stop, index.step
-            step = 1 if step is None else step
-            return self.data[start, stop, step]
+        return self.data[index]
 
     def __len__(self):
         return len(self.data)
