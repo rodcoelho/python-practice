@@ -143,7 +143,7 @@ class DynamicColumnarDataCollection(collections.abc.Sequence):
             
         else:
             with open(self.filename, 'r') as the_file:
-                self.headers = next(self.file)
+                self.headers = next(the_file)
                 self.file = ([x for x in row.strip().split(" ") if x] for row in self.file)
                 self._aggregate_data()
 
