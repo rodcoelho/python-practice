@@ -11,7 +11,7 @@ class Portfolio:
 
     def _add_to_portfolio(self, rows):
         for row in rows:
-            self.stocks.append(Stock(row[0], row[1], row[2]))
+            self.stocks.append(Stock.from_row(row))
 
     def read_portfolio(self):
         if self.filename.split('.')[-1] == "csv":
@@ -37,10 +37,16 @@ class Portfolio:
             
 
 class Stock:
+    types = (str, int, float)
     def __init__(self, name, shares, price):
         self.name = name
         self.shares = shares
         self.price = price
+
+    @classmethod
+    def from_row(cls, row):
+        vals = (func(val) for func, val in zip(cls.types, row))
+        return cls(*vals)
 
     def cost(self):
         return self.shares * self.price
@@ -52,6 +58,10 @@ class Stock:
 if __name__ == "__main__":
     portfolio = Portfolio("Data/portfolio.csv")
     portfolio.print_portfolio()
+
+    s = Stock.from_row(['AA', '100', '75'])
+    print(s.cost())
+    
     
 
     
