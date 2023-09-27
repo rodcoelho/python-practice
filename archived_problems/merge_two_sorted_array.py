@@ -77,7 +77,6 @@ class TestSortedArrayMerger(unittest.TestCase):
         am = SortedArrayMerger(array1, array2)
         actual = am.merge()
         self.assertEqual(actual, expected)
-
     
     def test_SortedArrayMerger_merge_3(self):
         array1 = [1,3]
@@ -86,7 +85,6 @@ class TestSortedArrayMerger(unittest.TestCase):
         am = SortedArrayMerger(array1, array2)
         actual = am.merge()
         self.assertEqual(actual, expected)
-
 
     def test_SortedArrayMerger_merge_4(self):
         array1 = []
