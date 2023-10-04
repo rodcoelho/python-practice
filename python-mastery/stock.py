@@ -78,6 +78,14 @@ class Stock:
     def sell(self, nshares):
         self.shares -= nshares
 
+    def __repr__(self):
+        # Note: The !r format code produces the repr() string
+        return f'{type(self).__name__}({self.name!r}, {self.shares!r}, {self.price!r})'
+    
+    def __eq__(self, other):
+        return isinstance(other, Stock) and ((self.name, self.shares, self.price) == 
+                                             (other.name, other.shares, other.price))
+
 class DecimalStock(Stock):
     _types = (str, int, Decimal)
     def __init__(self, name, shares, price):

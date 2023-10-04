@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import sys
+
 from stock import Portfolio
 
 GENERIC_ROW_FORMAT ="{:>10}"
@@ -63,6 +65,17 @@ def print_table(records, fields, formatter):
     for r in records:
         rowdata = [getattr(r, fieldname) for fieldname in fields]
         formatter.row(rowdata)
+
+
+class redirect_stdout:
+    def __init__(self, out_file):
+        self.out_file = out_file
+    def __enter__(self):
+        self.stdout = sys.stdout
+        sys.stdout = self.out_file
+        return self.out_file
+    def __exit__(self, ty, val, tb):
+        sys.stdout = self.stdout
 
 
 portfolio = Portfolio("Data/portfolio.csv")
