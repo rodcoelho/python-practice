@@ -5,16 +5,65 @@ from stock import Portfolio
 GENERIC_ROW_FORMAT ="{:>10}"
 HEADER_BREAK = "_________"
 
-def print_table(rows, columns):
-    row_format = "".join(GENERIC_ROW_FORMAT for column in columns)
-    print(row_format.format(*columns))
-    header_break = [HEADER_BREAK for column in columns]
-    print(row_format.format(*header_break))
 
-    for row in rows:
-        vals = [getattr(row, col) for col in columns]
-        print(row_format.format(*vals))
+class TableFormatter:
+    def headings(self, headers):
+        raise NotImplementedError()
+
+    def row(self, rowdata):
+        raise NotImplementedError()
+
+
+class TextTableFormatter(TableFormatter):
+    def headings(self, headers):
+        row_format = "".join(GENERIC_ROW_FORMAT for header in headers)
+        print(row_format.format(*headers))
+        header_break = [HEADER_BREAK for header in headers]
+        print(row_format.format(*header_break))
+
+    def row(self, rowdata):
+        print(' '.join(GENERIC_ROW_FORMAT.format(d) for d in rowdata))
+
+
+class CSVTableFormatter(TableFormatter):
+    def headings(self, headers):
+        print(",".join(header for header in headers))
+
+    def row(self, rowdata):
+        print(','.join(str(d) for d in rowdata))
+
+
+class HTMLTableFormatter(TableFormatter):
+    header_element = "<th>{}</th>"
+    header_div = "<tr> {} </tr>"
+    row_element = "<td>{}</td>"
+    row_div = "<tr> {} </tr>"
+    def headings(self, headers):
+        header_elements = " ".join(self.header_element.format(header) for header in headers)
+        print(self.header_div.format(header_elements))
+
+    def row(self, rowdata):
+        row_elements = " ".join(self.row_element.format(r) for r in rowdata)
+        print(self.row_div.format(row_elements))
+
+
+def create_formatter(name):
+    if name == "html":
+        formatter_cls = HTMLTableFormatter
+    elif name == "csv":
+        formatter_cls = CSVTableFormatter
+    elif name == "text":
+        formatter_cls = TextTableFormatter
+    else:
+        raise RuntimeError('Unknown format %s' % name)
+    return formatter_cls()
+
+def print_table(records, fields, formatter):
+    formatter.headings(fields)
+    for r in records:
+        rowdata = [getattr(r, fieldname) for fieldname in fields]
+        formatter.row(rowdata)
 
 
 portfolio = Portfolio("Data/portfolio.csv")
-print_table(portfolio.stocks, ['name', 'shares','price'])
+

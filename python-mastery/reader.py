@@ -25,12 +25,12 @@ def read_csv_as_instances(path, cls):
             instances.append(cls.from_row(row))    
     return instances
 
-print(read_csv_as_dicts('Data/portfolio.csv', [str,int,float]))
+# print(read_csv_as_dicts('Data/portfolio.csv', [str,int,float]))
 
-print(read_csv_as_dicts('Data/ctabus.csv', [str,str,str,int])[0])
+# print(read_csv_as_dicts('Data/ctabus.csv', [str,str,str,int])[0])
 
-print(read_csv_as_dicts('Data/ctabus.csv', [intern, intern ,str,int])[0])
+# print(read_csv_as_dicts('Data/ctabus.csv', [intern, intern ,str,int])[0])
 
-print(read_csv_as_instances('Data/portfolio.csv', Stock))
+# print(read_csv_as_instances('Data/portfolio.csv', Stock))
 
-print(len(read_csv_as_instances('Data/ctabus.csv', RowClassType)))
+# print(len(read_csv_as_instances('Data/ctabus.csv', RowClassType)))

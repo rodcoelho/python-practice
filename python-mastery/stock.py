@@ -91,12 +91,12 @@ if __name__ == "__main__":
     portfolio.print_portfolio()
 
     s = Stock.from_row(['AA', 100, 75.0])
-    print(s.cost)
+    # print(s.cost)
     
     s = Stock("GOOG", 10, 100.0)
-    print(s.cost)
+    # print(s.cost)
 
     s = DecimalStock("AAPL", 100, Decimal(101.0))
-    print(s.cost)
+    # print(s.cost)
 
     
