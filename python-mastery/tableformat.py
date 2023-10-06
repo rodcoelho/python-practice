@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
+from abc import ABC, abstractmethod
 
 from stock import Portfolio
 
@@ -8,12 +9,14 @@ GENERIC_ROW_FORMAT ="{:>10}"
 HEADER_BREAK = "_________"
 
 
-class TableFormatter:
+class TableFormatter(ABC):
+    @abstractmethod
     def headings(self, headers):
-        raise NotImplementedError()
+        pass
 
+    @abstractmethod
     def row(self, rowdata):
-        raise NotImplementedError()
+        pass
 
 
 class TextTableFormatter(TableFormatter):
@@ -61,6 +64,8 @@ def create_formatter(name):
     return formatter_cls()
 
 def print_table(records, fields, formatter):
+    if not isinstance(formatter, TableFormatter):
+        raise TypeError("formatter is not of TableFormatter type")
     formatter.headings(fields)
     for r in records:
         rowdata = [getattr(r, fieldname) for fieldname in fields]
