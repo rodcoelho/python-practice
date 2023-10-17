@@ -3,6 +3,7 @@ import unittest
 
 "Write an algorithm which computes the number of trailing zeros in n factorial."
 
+
 class FactorialHandler:
     def _factorial(self, num):
         output = 1
@@ -26,6 +27,7 @@ class FactorialHandler:
                 break
 
         return count
+
 
 class TestFactorialHandler(unittest.TestCase):
     def test_compute(self):
@@ -56,11 +58,8 @@ class TestFactorialHandler(unittest.TestCase):
         for test_case in test_cases:
             num, expected = test_case
             actual = fh.compute_trailing(num)
-            print("num", num, "expected", expected, "actual", actual)
-
             self.assertEqual(actual, expected)
             
 
-        
 if __name__ == "__main__":
     unittest.main()
