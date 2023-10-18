@@ -63,22 +63,23 @@ def read_csv_as_instances(path, cls):
     return instance_csv_reader.parse(path)
 
 
-print(read_csv_as_dicts('Data/portfolio.csv', [str,int,float]))
-# dict_csv_reader = DictCSVParser([str,int,float])
-# print(dict_csv_reader.parse('Data/portfolio.csv'))
+if __name__ == "__main__":
+    print(read_csv_as_dicts('Data/portfolio.csv', [str,int,float]))
+    # dict_csv_reader = DictCSVParser([str,int,float])
+    # print(dict_csv_reader.parse('Data/portfolio.csv'))
 
-print(read_csv_as_dicts('Data/ctabus.csv', [str,str,str,int])[0])
-# dict_csv_reader = DictCSVParser([str,str,str,int])
-# print(dict_csv_reader.parse('Data/ctabus.csv')[0])
+    print(read_csv_as_dicts('Data/ctabus.csv', [str,str,str,int])[0])
+    # dict_csv_reader = DictCSVParser([str,str,str,int])
+    # print(dict_csv_reader.parse('Data/ctabus.csv')[0])
 
-print(read_csv_as_dicts('Data/ctabus.csv', [intern, intern ,str,int])[0])
-# dict_csv_reader = DictCSVParser([intern, intern ,str,int])
-# print(dict_csv_reader.parse('Data/ctabus.csv')[0])
+    print(read_csv_as_dicts('Data/ctabus.csv', [intern, intern ,str,int])[0])
+    # dict_csv_reader = DictCSVParser([intern, intern ,str,int])
+    # print(dict_csv_reader.parse('Data/ctabus.csv')[0])
 
-print(read_csv_as_instances('Data/portfolio.csv', Stock))
-# instance_csv_reader = InstanceCSVParser(Stock)
-# print(instance_csv_reader.parse('Data/portfolio.csv'))
+    print(read_csv_as_instances('Data/portfolio.csv', Stock))
+    # instance_csv_reader = InstanceCSVParser(Stock)
+    # print(instance_csv_reader.parse('Data/portfolio.csv'))
 
-print(len(read_csv_as_instances('Data/ctabus.csv', RowClassType)))
-# instance_csv_reader = InstanceCSVParser(RowClassType)
-# print(len(instance_csv_reader.parse('Data/ctabus.csv')))
+    print(len(read_csv_as_instances('Data/ctabus.csv', RowClassType)))
+    # instance_csv_reader = InstanceCSVParser(RowClassType)
+    # print(len(instance_csv_reader.parse('Data/ctabus.csv')))

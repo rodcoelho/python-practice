@@ -52,7 +52,9 @@ class HTMLTableFormatter(TableFormatter):
         print(self.row_div.format(row_elements))
 
 
-def create_formatter(name):
+def create_formatter(
+    name, column_formats=None, upper_headers=False
+    ):
     if name == "html":
         formatter_cls = HTMLTableFormatter
     elif name == "csv":
@@ -61,6 +63,15 @@ def create_formatter(name):
         formatter_cls = TextTableFormatter
     else:
         raise RuntimeError('Unknown format %s' % name)
+
+    if column_formats:
+        class formatter_cls(ColumnFormatMixin, formatter_cls):
+            formats=column_formats
+    
+    if upper_headers:
+        class formatter_cls(UpperHeadersMixin, formatter_cls):
+            pass
+
     return formatter_cls()
 
 def print_table(records, fields, formatter):
@@ -82,6 +93,19 @@ class redirect_stdout:
     def __exit__(self, ty, val, tb):
         sys.stdout = self.stdout
 
+
+class ColumnFormatMixin:
+    formats = []
+    def row(self, rowdata):
+        rowdata = [(fmt % d) for fmt, d in zip(self.formats, rowdata)]
+        super().row(rowdata)
+
+class UpperHeadersMixin:
+    def headings(self, headers):
+        super().headings([h.upper() for h in headers])
+
+class PortfolioFormatter(UpperHeadersMixin, ColumnFormatMixin, TextTableFormatter):
+    formats = ['%s', '%d', '%0.2f']
 
 portfolio = Portfolio("Data/portfolio.csv")
 
