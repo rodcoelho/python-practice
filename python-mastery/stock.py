@@ -2,6 +2,7 @@
 
 import csv
 from decimal import Decimal
+from validate import PositiveInteger, PositiveFloat, NonEmptyString, DecimalType
 
 class Portfolio:
     def __init__(self, filename):
@@ -54,22 +55,14 @@ class Stock:
         return self._shares
     @shares.setter
     def shares(self, value):
-        if not isinstance(value, self._types[1]):
-            raise TypeError(f'Expected {self._types[1].__name__}')
-        if value < 0:
-            raise ValueError('shares must be >= 0')
-        self._shares = value
+        self._shares = PositiveInteger.check(value)
 
     @property
     def price(self):
         return self._price
     @price.setter
     def price(self, value):
-        if not isinstance(value, self._types[2]):
-            raise TypeError(f'Expected {self._types[2].__name__}')
-        if value < 0:
-            raise ValueError('price must be >= 0')
-        self._price = value
+        self._price = PositiveFloat.check(value)
 
     @property
     def cost(self):
@@ -87,11 +80,17 @@ class Stock:
                                              (other.name, other.shares, other.price))
 
 class DecimalStock(Stock):
-    _types = (str, int, Decimal)
-    def __init__(self, name, shares, price):
-        self.name = name
-        self.shares = shares
-        self.price = price
+    # _types = (str, int, Decimal)
+    # def __init__(self, name, shares, price):
+    #     self.name = name
+    #     self.shares = shares
+    #     self.price = price
+    @property
+    def price(self):
+        return self._price
+    @price.setter
+    def price(self, value):
+        self._price = DecimalType.check(value)
 
 
 if __name__ == "__main__":
