@@ -21,7 +21,8 @@ class Solution:
             try:
                 to_jump = nums[current_index]
             except IndexError:
-                return True
+                count += to_jump
+                break
             last_index = current_index
             current_index = current_index + to_jump
             count += to_jump
