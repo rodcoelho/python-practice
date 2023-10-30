@@ -16,6 +16,9 @@ string convert(string s, int numRows);
 
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
+        if numRows == 1:
+            return s
+
         listified = [[] for d in range(numRows + 1)]
 
         count = 0
