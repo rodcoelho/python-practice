@@ -24,19 +24,36 @@ class Solution:
         while not found:
 
             if numbers[right] + numbers[left] == target:
-                return [right + 1, left + 1]
+                return [left + 1, right + 1]
             
             else:
+                if numbers[right] + numbers[left] < target:
+                    left += 1
+                    
+                elif numbers[right] >= target:
+                    right -=1
+                
+                elif numbers[right] + numbers[left] > target:
+                    right -= 1
 
+                elif left == right:
+                    right -= 1
+                    left = 0
 
 
 class TestSolution(unittest.TestCase):
     def test_twoSum(self):
         s = Solution()
 
+        numbers = [-1000,-1,0,1]
+        target = 1
+        expected = [3,4]
+        actual = s.twoSum(numbers, target)
+        self.assertEqual(actual, expected)
+
         numbers = [1,2,3,4,5,6,7]
-        target = 9
-        expected = [1,2]
+        target = 4
+        expected = [1,3]
         actual = s.twoSum(numbers, target)
         self.assertEqual(actual, expected)
 
