@@ -22,7 +22,6 @@ class Solution:
 
                 if next_c + current == target:
                     return [i, j]
-                print(current, next_c)
         
 
 class TestSolution(unittest.TestCase):
