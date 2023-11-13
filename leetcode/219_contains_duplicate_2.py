@@ -13,16 +13,9 @@ class Solution:
         
         for i in range(len(nums) - 1):
 
-            print("----")
-            print("i", i)
-
             for j in range(i+1, i+k+1):
-
-                print("j", j)
-
                 try:
                     if nums[i] == nums[j]:
-
                         return True
                 except IndexError:
                     continue

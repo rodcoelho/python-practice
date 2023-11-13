@@ -20,7 +20,7 @@ class Solution:
 
         while count > 0:
 
-            normalized_n = [int(char)*int(char) for char in str(n)]
+            normalized_n = (int(char)*int(char) for char in str(n))
             n = sum(normalized_n)
 
             if n == 1:
