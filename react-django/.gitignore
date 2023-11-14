@@ -1,2 +1,3 @@
 music_controller/db.sqlite3
-music_controller/api/migrations/
+music_controller/api/migrations/node_modules/
+music_controller/frontend/node_modules/

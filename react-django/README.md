@@ -1,4 +1,13 @@
-https://www.youtube.com/watch?v=6c2NqDyxppU&list=PLzMcBGfZo4-kCLWnGmK0jUBmGLaJxvi4j&index=3
 
-0:00
+python3 manage.py makemigrations
+
+# runserver
+python3 manage.py runserver
+# run node dev - found in package.json scripts
+npm run dev 
+
+
+https://www.youtube.com/watch?v=YEmjBEDyVSY&list=PLzMcBGfZo4-kCLWnGmK0jUBmGLaJxvi4j&index=4
+
+0:0
 
