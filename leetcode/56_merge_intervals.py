@@ -21,34 +21,26 @@ class Solution:
             end_current = current[1]
 
             # iterate through final to see if we should inject
-
             injected = False
 
             for i in range(len(final)):
 
                 beg_final = final[i][0]
                 end_final = final[i][1]
-                # print("ENTER")
-                # print("current", current)
-                # print("final", final)
 
                 if beg_final <= beg_current <= end_final <= end_current:
-                    # print("IF 1")
                     final[i] = [beg_final, end_current]
                     injected = True
 
                 elif beg_current <= beg_final <= end_current <= end_final:
-                    # print("IF 2")
                     final[i] = [beg_current, end_final]
                     injected = True
 
                 elif beg_current <= beg_final <= end_final <= end_current:
-                    # print("IF 2")
                     final[i] = [beg_current, end_current]
                     injected = True
                 
                 elif beg_final <= beg_current <= end_current <= end_final:
-                    # print("IF 2")
                     final[i] = [beg_final, end_final]
                     injected = True
 
@@ -59,7 +51,7 @@ class Solution:
             count += 1
         
         return final
-
+    
 
 class TestSolution(unittest.TestCase):
     def test_merge(self):
