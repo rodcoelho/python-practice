@@ -1,1 +1,1 @@
-https://leetcode.com/problems/majority-element/?envType%253Dstudy-plan-v2%2526envId%253Dtop-interview-150
+https://leetcode.com/studyplan/leetcode-75/
